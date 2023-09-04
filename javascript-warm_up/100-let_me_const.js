@@ -1,3 +1,4 @@
 function convert(myVar){
-    return myVar = 333
+     myVar = 333;
+     return myVar;
 }
