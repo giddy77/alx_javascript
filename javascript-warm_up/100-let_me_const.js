@@ -1,4 +1,4 @@
-const myVar = "JavaScript is amazing"
+let myVar
 function convert(myVar){
      myVar = 333;
      return myVar;
