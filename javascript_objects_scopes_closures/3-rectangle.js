@@ -11,7 +11,7 @@ class Rectangle {
         }
       }
 
-      function print(width, height) {
+     print(width, height) {
         console.log("Width:", width);
         console.log("Height:", height);
       }
