@@ -6,9 +6,7 @@ class Square extends Rectangle{
        super(size, size)
     }
 
-    print() {
-        console.log(`Square\nWidth: ${this.width}\nHeight: ${this.height}`);
-      }
+    super(print);
 }
 
 module.exports = Square;
