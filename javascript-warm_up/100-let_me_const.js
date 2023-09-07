@@ -1,5 +1,4 @@
-let myVar
-function convert(myVar){
-     myVar = 333;
-     return myVar;
-}
+// File: myVar.js
+const myVar = 333;
+
+module.exports = myVar;
