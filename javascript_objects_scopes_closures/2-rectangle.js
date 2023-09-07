@@ -4,8 +4,7 @@ class Rectangle {
     constructor(w, h) {
         if (w <= 0 || h <= 0 || !Number.isInteger(w) || !Number.isInteger(h)) {
           // If w or h is less than or equal to zero, not an integer, or negative, create an empty object
-          this.width = undefined;
-          this.height = undefined;
+          return {};
         } else {
           this.width = w;
           this.height = h;
