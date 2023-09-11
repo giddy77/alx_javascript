@@ -1,9 +1,9 @@
 
-const url = sys.argv[2];
+const url = process.argv[2];
 let result = [];
 
-const request = require('requests');
+const request = require('request');
 const response = request.get(url, {encoding:"utf-8"})
 .on('response',function(response){
-    console.log(response.statuscode)
+    console.log(response.statusCode)
 });
