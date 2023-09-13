@@ -4,7 +4,7 @@ const ParentSquare = require('./5-square');
 // Define the Square class that inherits from ParentSquare
 class Square extends Square {
   constructor(size) {
-    super(size); // Call the constructor of the parent class (ParentSquare) with size
+    super(size,size); // Call the constructor of the parent class (ParentSquare) with size
   }
 
   charPrint(c) {
@@ -22,5 +22,6 @@ class Square extends Square {
   }
 }
 
+let mySquare = new Square()
 // Export the Square class
 module.exports = Square;
