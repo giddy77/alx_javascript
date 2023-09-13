@@ -9,8 +9,6 @@ class Square extends Rectangle {
 }
 
 let mySquare = new Square(4)
-
-mySquare.print()
 mySquare.width
 mySquare.height
 
