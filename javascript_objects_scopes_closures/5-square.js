@@ -2,10 +2,16 @@
 const Rectangle = require("./4-rectangle");// Replace with the actual path to your Rectangle class file
 
 class Square extends Rectangle {
-  constructor(w,h,size) {
-    super(w,h, size);
+  constructor(size) {
+    super(size, size);
     this.size = size; // Call the constructor of the parent class (Rectangle)
   }
 }
+
+let mySquare = new Square(4)
+
+mySquare.print()
+mySquare.width
+mySquare.height
 
 module.exports = Square;
