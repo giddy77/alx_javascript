@@ -3,12 +3,12 @@ const Rectangle = require("./4-rectangle");// Replace with the actual path to yo
 
 class Square extends Rectangle {
   constructor(size) {
-    super(size);
+    super(size, size);
     this.size = size; // Call the constructor of the parent class (Rectangle)
   }
 }
 
-let mySquare = new Square(4)
+let mySquare = new Square()
 mySquare.width
 mySquare.height
 
