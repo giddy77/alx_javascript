@@ -6,5 +6,3 @@ class Square extends Rectangle {
     this.size = size; // Call the constructor of the parent class (Rectangle)
   }
 }
-
-modules.exports = Square;
