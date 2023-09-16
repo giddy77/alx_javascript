@@ -3,7 +3,7 @@ const request = require('request');
 
 request.get(url, { encoding: 'utf-8' }).on('response', function (response) {
   let responseData = '';
-  const id = $url +'/18/';
+  const id = url +'/18/';
 
   let count = 0;
 
