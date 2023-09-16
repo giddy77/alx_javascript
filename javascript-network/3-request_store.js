@@ -10,7 +10,7 @@ request.get(url, (error, response, body) => {
         if (writeError) {
             console.error('Error writing to file:', writeError);
         } else {
-            console.log(`Webpage content successfully saved to ${filePath}`);
+            console.log(filePath);
         }
     });
 });
