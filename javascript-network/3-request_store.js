@@ -8,7 +8,7 @@ request.get(url, (error, response, body) => {
     }
     fs.writeFile(filePath, body, 'utf-8', (writeError) => {
         if (writeError) {
-            console.error('Error writing to file:', writeError);
+            console.error(writeError);
         } else {
             console.log(filePath);
         }
