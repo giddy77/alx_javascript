@@ -12,7 +12,7 @@ request.get(apiUrl, (error, response, body) => {
 
         // Iterate through the todos and count completed tasks for each user
         todos.forEach((todo) => {
-            if (todo.completed = true) {
+            if (todo.completed === true) {
                 if (completedTasksByUser[todo.userId]) {
                     completedTasksByUser[todo.userId]++;
                 } else {
