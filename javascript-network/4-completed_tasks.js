@@ -11,6 +11,7 @@ request.get(apiUrl, (error, response, body) => {
 
     // Initialize an object to store the count of completed tasks by user id
     const completedTasksByUserId = {};
+    let userId = "";
 
 // Loop through the tasks and count completed tasks for each userId
 for (const task of todosData) {
