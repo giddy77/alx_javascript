@@ -1,31 +1,33 @@
-const apiUrl = 'https://jsonplaceholder.typicode.com/todos';
 const request = require('request');
 
+const apiUrl = 'https://jsonplaceholder.typicode.com/todos';
+
+// Make a request to fetch the data from the API
 request.get(apiUrl, (error, response, body) => {
-    if (error) {
-        console.error('Error:', error);
-    } else if (response && response.statusCode === 200) {
-        const todos = JSON.parse(body);
+  if (error) {
+    console.error('Error:', error);
+  } else if (response && response.statusCode === 200) {
+    const todosData = JSON.parse(body);
 
-        // Create an object to store the completed task counts for each user
-        const completedTasksByUser = {};
+    // Initialize an object to store the count of completed tasks by user id
+    const completedTasksByUserId = {};
 
-        // Iterate through the todos and count completed tasks for each user
-        todos.forEach((todo) => {
-            if (todo.completed === true) {
-                if (completedTasksByUser[todo.userId]) {
-                    completedTasksByUser[todo.userId]++;
-                } else {
-                    completedTasksByUser[todo.userId] = 1;
-                }
-            }
-        });
+    // Filter the data to find tasks with completed: true
+    const completedTasks = todosData.filter((task) => task.completed === true);
 
-        // Print the number of completed tasks by each user ID
-        for (const userId in completedTasksByUser) {
-            console.log(`'${userId}': ${completedTasksByUser[userId]},`);
-        }
-    } else {
-        console.error('HTTP request failed with status code:', response ? response.statusCode : 'unknown');
+    // Compute the number of completed tasks for each user
+    completedTasks.forEach((task) => {
+      const userId = task.userId;
+      if (completedTasksByUserId[userId]) {
+        completedTasksByUserId[userId]++;
+      } else {
+        completedTasksByUserId[userId] = 1;
+      }
+    });
+
+    // Print users with completed tasks and the number of completed tasks
+    for (const userId in completedTasksByUserId) {
+      console.log(`User ID ${userId}: ${completedTasksByUserId[userId]} completed tasks`);
     }
+  }
 });
