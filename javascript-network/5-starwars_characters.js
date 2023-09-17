@@ -10,14 +10,23 @@ request.get(filmsUrl, (error, response, body) => {
     } else if (response && response.statusCode === 200) {
         const filmsData = JSON.parse(body);
 
-        // Iterate through filmsData.results to count films with the specified episode ID
-        let count = 0;
+        // Initialize an object to count occurrences based on episode_id
+        const episodeCounts = {};
+
+        // Iterate through filmsData.results
         for (const film of filmsData.results) {
             if (film.episode_id == episode && film.completedtasks === true) {
-                count++;
+                // If episode_id matches and completedtasks is true
+                // Increment the count for that episode_id
+                if (episodeCounts[film.episode_id]) {
+                    episodeCounts[film.episode_id]++;
+                } else {
+                    episodeCounts[film.episode_id] = 1;
+                }
             }
         }
 
-        console.log(`Number of films with episode ID ${episode} and completedtasks set to true: ${count}`);
+        console.log(`Count of films with episode ID ${episode} and completedtasks set to true:`);
+        console.log(episodeCounts);
     }
 });
