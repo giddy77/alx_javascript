@@ -20,14 +20,12 @@ request.get(apiUrl, (error, response, body) => {
       const userId = task.userId;
       if (completedTasksByUserId[userId]) {
         completedTasksByUserId[userId]++;
-      } else {
-        completedTasksByUserId[userId] = 1;
-      }
+      } 
     });
 
     // Print users with completed tasks and the number of completed tasks
     for (const userId in completedTasksByUserId) {
-      console.log(`User ID ${userId}: ${completedTasksByUserId[userId]} completed tasks`);
+      console.log(`${userId}: ${completedTasksByUserId[userId]}`);
     }
   }
 });
