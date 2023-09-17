@@ -10,28 +10,14 @@ request.get(filmsUrl, (error, response, body) => {
     } else if (response && response.statusCode === 200) {
         const filmsData = JSON.parse(body);
 
-        // Find the film with the specified episode number
-         filmsData.forEach(movie => {
-            const results = filmsData.movie
-        });
-        const selectedFilm = results.find((film) => film.episode_id == episode);
-
-        if (selectedFilm) {
-            // Fetch and print characters from the selected film
-            selectedFilm.characters.forEach((characterUrl) => {
-                request.get(characterUrl, (charError, charResponse, charBody) => {
-                    if (charError) {
-                        console.error('Error:', charError);
-                    } else if (charResponse && charResponse.statusCode === 200) {
-                        const characterData = JSON.parse(charBody);
-                        console.log(characterData.name);
-                    }
-                });
-            });
-        } else {
-            console.log('Film not found for episode:', episode);
+        // Iterate through filmsData to count films with the specified episode ID
+        let count = 0;
+        for (const film of filmsData.results) {
+            if (film.episode_id == episode) {
+                count++;
+            }
         }
-    } else {
-        console.error('HTTP request failed with status code:', response ? response.statusCode : 'unknown');
+
+        console.log(`Number of films with episode ID ${episode}: ${count}`);
     }
 });
