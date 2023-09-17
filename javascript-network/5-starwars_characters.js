@@ -13,9 +13,17 @@ request.get(filmsUrl, (error, response, body) => {
         // Iterate through filmsData to count films with the specified episode ID
         let count = 0;
         for (const film of filmsData.results) {
-            if (film.episode_id == episode) {
-                count++;
-            }
+            // if (film.episode_id == episode) {
+            //     count++;
+            // }
+            const dataArray = filmsData.results;
+
+            dataArray.forEach(completedtask => {
+                if (completedtask ===true){
+                    count++;
+                    
+                }                
+            });
         }
 
         console.log(`Number of films with episode ID ${episode}: ${count}`);
