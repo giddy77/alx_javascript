@@ -10,22 +10,14 @@ request.get(filmsUrl, (error, response, body) => {
     } else if (response && response.statusCode === 200) {
         const filmsData = JSON.parse(body);
 
-        // Iterate through filmsData to count films with the specified episode ID
+        // Iterate through filmsData.results to count films with the specified episode ID
         let count = 0;
         for (const film of filmsData.results) {
-            // if (film.episode_id == episode) {
-            //     count++;
-            // }
-            const dataArray = filmsData.results;
-
-            dataArray.forEach(completedtask => {
-                if (completedtask ===true){
-                    count++;
-                    
-                }                
-            });
+            if (film.episode_id == episode && film.completedtasks === true) {
+                count++;
+            }
         }
 
-        console.log(`Number of films with episode ID ${episode}: ${count}`);
+        console.log(`Number of films with episode ID ${episode} and completedtasks set to true: ${count}`);
     }
 });
