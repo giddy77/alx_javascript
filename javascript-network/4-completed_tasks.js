@@ -12,20 +12,17 @@ request.get(apiUrl, (error, response, body) => {
     // Initialize an object to store the count of completed tasks by user id
     const completedTasksByUserId = {};
 
-    // Filter the data to find tasks with completed: true
-    const completedTasks = todosData.filter((task) => task.completed === true);
-
-    // Compute the number of completed tasks for each user
-    completedTasks.forEach((task) => {
-      const userId = task.userId;
-      if (completedTasksByUserId[userId]) {
-        completedTasksByUserId[userId]++;
-      } 
-    });
-
-    // Print users with completed tasks and the number of completed tasks
-    for (const userId in completedTasksByUserId) {
-      console.log(`${userId}: ${completedTasksByUserId[userId]}`);
+// Loop through the tasks and count completed tasks for each userId
+for (const task of tasks) {
+    const userId = task.userId;
+    if (task.completed) {
+        if (completedTasksByUserId[userId]) {
+            completedTasksByUserId[userId]++;
+        } else {
+            completedTasksByUserId[userId] = 1;
+        }
     }
-  }
+}
+console.log(`$(userId) : $(completedTasksByUserId)`)
+}
 });
