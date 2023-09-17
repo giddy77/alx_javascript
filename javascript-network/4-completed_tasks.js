@@ -16,7 +16,7 @@ request.get(apiUrl, (error, response, body) => {
 // Loop through the tasks and count completed tasks for each userId
 for (const task of todosData) {
     const userId = task.userId;
-    if (task.completed) {
+    if (task.completed === true) {
         if (completedTasksByUserId[userId]) {
             completedTasksByUserId[userId]++;
         } else {
