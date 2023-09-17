@@ -23,6 +23,6 @@ for (const task of todosData) {
         }
     }
 }
-console.log(`$(userId) : $(completedTasksByUserId)`)
+console.log(`${userId} : ${completedTasksByUserId}`)
 }
 });
