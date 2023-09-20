@@ -20,10 +20,17 @@
 
     //function to set the cookie based on the user inputs
     function setCookie(){
-         const firstName = document.getElementById('firstName').value;
+    const firstName = document.getElementById('firstName').value;
     const email = document.getElementById('email').value;
-        document.cookie = `firstName=${firstName}`;
-        document.cookie = `email=${email}`;
+
+    const expirationDate = new Date();
+    expirationDate.setTime(expirationDate.getTime() + 10 * 24 * 60 * 60 * 1000);
+
+    // Format the expiration date in UTC format
+    const expires = `expires=${expirationDate.toUTCString()}`;
+
+    document.cookie = `firstName=${firstName}; ${expires}; path=/`;
+    document.cookie = `email=${email}; ${expires}; path=/`;
     }
 
    
@@ -47,5 +54,23 @@
 
     document.body.appendChild(paragraph); 
     }//append it to the parent body
+
+    //get cookie function
+    function getCookie(name) {
+        const cookiesDecoded = decodeURIComponent(document.cookie);
+        const cookieArray = cookiesDecoded.split('; ');
+        
+        for (const cookie of cookieArray) {
+            const [cookieName, cookieValue] = cookie.split('=');
+    
+            if (cookieName === name) {
+                return cookieValue;
+            }
+        }
+    
+        // Return null if the cookie with the specified name is not found
+        return null;
+    }
+    
 </script>
 </html>
