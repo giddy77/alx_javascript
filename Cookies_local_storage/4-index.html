@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
 </head>
 <body>
         <div id="form">
@@ -21,18 +22,19 @@
    
 
     //function to set the cookie based on the user inputs
-    function setCookie(){
-    const firstName = document.getElementById('firstName').value;
-    const email = document.getElementById('email').value;
-
-    const expirationDate = new Date();
-    expirationDate.setTime(expirationDate.getTime() + 10 * 24 * 60 * 60 * 1000);
-
-    // Format the expiration date in UTC format
-    const expires = `expires=${expirationDate.toUTCString()}`;
-
-    document.cookie = `firstName=${firstName}; ${expires}; path=/`;
-    document.cookie = `email=${email}; ${expires}; path=/`;
+    function setCookiesAndShowWelcomeMessage() {
+        const firstname = document.getElementById('firstname').value;
+        const email = document.getElementById('email').value;
+        
+        const expirationDate = new Date();
+        expirationDate.setDate(expirationDate.getDate() + 10);
+        
+        const expires = expirationDate.toUTCString();
+        
+        Cookies.set('firstname', firstname, { expires });
+        Cookies.set('email', email, { expires });
+        
+        showWelcomeMessageOrForm();
     }
 
    
@@ -57,22 +59,6 @@
     document.body.appendChild(paragraph); 
     }//append it to the parent body
 
-    //get cookie function
-    function getCookie(name) {
-        const cookiesDecoded = decodeURIComponent(document.cookie);
-        const cookieArray = cookiesDecoded.split('; ');
-        
-        for (const cookie of cookieArray) {
-            const [cookieName, cookieValue] = cookie.split('=');
-    
-            if (cookieName === name) {
-                return cookieValue;
-            }
-        }
-    
-        // Return null if the cookie with the specified name is not found
-        return null;
-    }
 
     function showForm() {
         const welcomeMessage = document.getElementById('welcome-message');
@@ -93,13 +79,10 @@
         form.style.display = 'none';
     }
 
-    //function to delete the cookies and show form
+    //function to delete the cookies and show form using the js-cookie
     function deleteCookiesAndShowForm() {
-        // Code to delete cookies goes here
-        document.cookie = 'firstName=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';//cookie is deleted by setting the expiry tieme to a passed date in this case 1970
-        document.cookie = 'email=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-    
-        // Show the form
+        Cookies.remove('firstname');
+        Cookies.remove('email');
         showForm();
     }
 
