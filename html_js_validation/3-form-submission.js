@@ -14,3 +14,7 @@ function handleFormSubmit(event){
     }
 
 }
+document.addEventListener("DOMContentLoaded", function () {
+    // Add an event listener to the form to handle form submission
+    document.getElementById("submitForm").addEventListener("submit", handleFormSubmit);
+});
